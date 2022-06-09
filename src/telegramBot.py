@@ -35,8 +35,11 @@ class TelegramBot:
         result = requests.get(link_request)
         return json.loads(result.content)
 
-    def create_answer(self):
-        return "Ola, tudo bem?"
+    def create_answer(self, message_text):
+        if message_text in ["oi", "olá", "eae"]:
+            return "Ola, tudo bem?"
+        else: 
+            return "Não entendi..."
 
     def send_answer(self,chat_id, answer):
         link_to_send = f"{self.url}sendMessage?chat_id= {chat_id}&text={answer}"
